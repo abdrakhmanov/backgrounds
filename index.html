@@ -8,43 +8,45 @@
         integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg=="
         crossorigin="anonymous" />
     <style>
+        body {
+            overflow: hidden;
+            background-color: #212121;
+        }
         #net {
             height: 1080px;
             width: 100%;
         }
-        #ug-logo-container {
+        #ug-logo {
             position: absolute;
             top: 30px;
             left: 30px;
-            width: 300px;
-            height: 300px;
-        }
-        #ug-logo {
+
             background-image: url(img/ug-logo.svg);
-            background-position: 0 -170px;
-            background-size: cover;
+            background-size: 100%;
             background-repeat: no-repeat;
             filter: invert(1);
             display: inline-block;
-            width: 100%;
-            height: 100%;
+            
+            width: 128px;
+            height: 128px;
         }
     </style>
 </head>
 <body>
     <div id="net"></div>
-    <div id="ug-logo-container">
-        <div id="ug-logo"></div>
-    </div>
+    <div id="ug-logo"></div>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r123/three.min.js"
         integrity="sha512-Q+IG0h7As6sfqE2t1Xf5IeamNyCXb4EXxGCA9Mlbpv7xtwurVHNdVDbyWeSQ3ulPf2FRlqeu77Ec3SJDdIR63w=="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
     <script>
-        (function(w){
+        (function(w, $){
 
-            VANTA.NET({
+            const effect = VANTA.NET({
                 el: "#net",
                 mouseControls: true,
                 touchControls: true,
@@ -55,12 +57,31 @@
                 scaleMobile: 1.00,
                 color: 0x64dd17,
                 backgroundColor: 0x212121,
-                points: 12.00,
+                points: 10.00,
                 maxDistance: 23.00,
-                spacing: 14.00
+                spacing: 15.00
             });
 
-        })(window);
+            $(w).on('resize', function () {
+                console.log('win.resize', effect);
+                var win_w = $(w).width(),
+                    win_h = $(w).height();
+
+                $('#net').css({
+                    'width': win_w,
+                    'height': win_h
+                });
+
+                $('#ug-logo').css({
+                    'width': win_w / 8,
+                    'height': win_w / 8
+                });
+
+                effect.resize();
+            });
+            
+            $(w).trigger('resize');
+        })(window, jQuery);
     </script>
 </body>
 </html>
