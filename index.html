@@ -7,35 +7,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css"
         integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg=="
         crossorigin="anonymous" />
-    <style>
-        body {
-            overflow: hidden;
-            background-color: #212121;
-        }
-        #net {
-            height: 1080px;
-            width: 100%;
-        }
-        #ug-logo {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-
-            background-image: url(img/ug-logo.svg);
-            background-size: 100%;
-            background-repeat: no-repeat;
-            filter: invert(1);
-            display: inline-block;
-            
-            width: 128px;
-            height: 128px;
-        }
-    </style>
+    <link rel="stylesheet" href="style/common.css">
 </head>
-<body>
+<body style="font-size: 12px;">
     <div id="net"></div>
     <div id="ug-logo"></div>
     
+    <!-- https://codepen.io/ivanodintsov/pen/BjVMRL -->
+    <!-- https://codepen.io/n-sayenko/pen/qOXKVr -->
+    <!--div id="tree-container"> 
+        <canvas id="scene-bg" width="500px" height="500px" style="background:black; filter: opacity(0.5); display: block; margin: 0 auto"></canvas>
+        <canvas id="scene" width="500px" height="500px" style="display: block; margin: 0 auto; position: absolute; top: 0;"></canvas>
+    </div-->
+
+    <div id="ug-text" class="hidden">
+        <div id="fly-word-government" class="fly-word">
+            <span>Government</span>
+        </div>
+
+        <div id="fly-word-user" class="fly-word">
+            <span>User</span>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
         integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
         crossorigin="anonymous"></script>
@@ -43,45 +37,7 @@
         integrity="sha512-Q+IG0h7As6sfqE2t1Xf5IeamNyCXb4EXxGCA9Mlbpv7xtwurVHNdVDbyWeSQ3ulPf2FRlqeu77Ec3SJDdIR63w=="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
-    <script>
-        (function(w, $){
-
-            const effect = VANTA.NET({
-                el: "#net",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color: 0x64dd17,
-                backgroundColor: 0x212121,
-                points: 10.00,
-                maxDistance: 23.00,
-                spacing: 15.00
-            });
-
-            $(w).on('resize', function () {
-                console.log('win.resize', effect);
-                var win_w = $(w).width(),
-                    win_h = $(w).height();
-
-                $('#net').css({
-                    'width': win_w,
-                    'height': win_h
-                });
-
-                $('#ug-logo').css({
-                    'width': win_w / 8,
-                    'height': win_w / 8
-                });
-
-                effect.resize();
-            });
-            
-            $(w).trigger('resize');
-        })(window, jQuery);
-    </script>
+    <script src="js/christmas_tree.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
