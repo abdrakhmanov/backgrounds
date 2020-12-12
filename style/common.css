@@ -8,6 +8,8 @@ body {
 #net {
     height: 1080px;
     width: 100%;
+    min-width: 600px;
+    min-height: 240px;
 }
 #ug-logo {
     position: absolute;
@@ -20,8 +22,8 @@ body {
     filter: invert(1);
     display: inline-block;
     
-    width: 128px;
-    height: 128px;
+    min-width: 64px !important;
+    min-height: 64px !important;
 }
 #tree-container {
     position: absolute;
