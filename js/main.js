@@ -39,8 +39,8 @@
         });
 
         $('#ug-logo').css({
-            'width': square / 10000,
-            'height': square / 10000
+            'width': square / 6000,
+            'height': square / 6000
         }).show();
 
         effect.resize();
