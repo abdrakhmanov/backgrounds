@@ -35,7 +35,21 @@ function init() {
     //myMap.geoObjects.add(myGeoObject);
     for(var i=0; i < points.length; i++){
         //myMap.geoObjects.add(new ymaps.Placemark([55.684758, 37.738521], {}, {}));
-        myMap.geoObjects.add(new ymaps.Placemark(points[i].coordinates, {}, {}));
+        
+        //По умолчанию красим синим
+        var iconColor = "#0000FF"; 
+
+        if ( $.inArray(points.ip, ip_2020) ) {
+            // Если адрес засветился в 2020, то красим красным
+            iconColor = "#FF0000";
+
+            // Если адрес был и в 2019, то красим зеленым
+            if ($.inArray(points.ip, ip_2019) ) { iconColor = "#00FF00"; }
+        }
+
+        myMap.geoObjects.add(new ymaps.Placemark(points[i].coordinates, {}, {
+            iconColor: iconColor
+        }));
     }
     
 }
