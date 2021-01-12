@@ -39,17 +39,25 @@ function init() {
         //По умолчанию красим синим
         var iconColor = "#0000FF"; 
 
+        var showIcon = false;
+
         if ( $.inArray(points.ip, ip_2020) ) {
+            
+            showIcon = true; 
+
             // Если адрес засветился в 2020, то красим красным
             iconColor = "#FF0000";
 
             // Если адрес был и в 2019, то красим зеленым
             if ($.inArray(points.ip, ip_2019) ) { iconColor = "#00FF00"; }
+            
         }
 
-        myMap.geoObjects.add(new ymaps.Placemark(points[i].coordinates, {}, {
-            iconColor: iconColor
-        }));
+        if (showIcon) {
+            myMap.geoObjects.add(new ymaps.Placemark(points[i].coordinates, {}, {
+                iconColor: iconColor
+            }));
+        }
     }
     
 }
